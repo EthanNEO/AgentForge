@@ -1,0 +1,116 @@
+{
+  "p01_complex_collaboration": {
+    "task": "构建一个团队活动经费报销工具（可操作网页）：先做需求分析，再实现报销录入与审批页面，然后编写测试报告，最后输出评审结论和风险清单。",
+    "run_id": "20261116-112230-b8b17b74",
+    "resume_run_id": "20261116-112627-f43a61e1",
+    "final_run_id": "20261116-112627-f43a61e1",
+    "status": "succeeded",
+    "node_count": 4,
+    "roles": [
+      "analyst",
+      "coder",
+      "reviewer",
+      "tester"
+    ],
+    "executed_roles": [
+      "analyst",
+      "coder",
+      "reviewer",
+      "tester"
+    ],
+    "agents_used": [
+      "交付评审·明鉴",
+      "测试工程师·断言",
+      "编码专家·磐石",
+      "编码助手·疾风"
+    ],
+    "handoff_count": 3,
+    "handoffs": [
+      {
+        "files": [
+          {
+            "file": "analysis.md",
+            "from_node": "analyze",
+            "chars": 6977
+          }
+        ],
+        "message": "接收上游产物：analysis.md（来自 analyze，6977 字符）"
+      },
+      {
+        "files": [
+          {
+            "file": "index.html",
+            "from_node": "build",
+            "chars": 23903
+          }
+        ],
+        "message": "接收上游产物：index.html（来自 build，23903 字符）"
+      },
+      {
+        "files": [
+          {
+            "file": "index.html",
+            "from_node": "build",
+            "chars": 23903
+          },
+          {
+            "file": "test_report.md",
+            "from_node": "test",
+            "chars": 3451
+          }
+        ],
+        "message": "接收上游产物：index.html（来自 build，23903 字符）、test_report.md（来自 test，3451 字符）"
+      }
+    ],
+    "complexity": {
+      "complex": true,
+      "cues": [
+        "测试",
+        "评审",
+        "风险",
+        "需求分析"
+      ],
+      "expanded": false,
+      "reason": "命中复杂线索（测试、评审、风险、需求分析），按多节点 DAG 协作执行"
+    },
+    "monitor_url": "http://127.0.0.1:8000/?run=20261116-112627-f43a61e1",
+    "workbench_url": "http://127.0.0.1:8000/workbench?run=20261116-112627-f43a61e1"
+  },
+  "p02_agent_crud_selection": {
+    "agent_id": "agent-75de8752",
+    "rank_top": {
+      "agent_id": "agent-75de8752",
+      "agent_name": "编码新星·验收",
+      "model": "deepseek-flash",
+      "score": 0.8635,
+      "breaker": "closed",
+      "reason": "能力 0.99×0.4 + 成功率 0.50×0.25 + 空闲 1.00×0.2 + 成本优势 0.95×0.15",
+      "factors": {
+        "capability": 0.99,
+        "success_rate": 0.5,
+        "load": 0.0,
+        "cost_per_1k": 0.001,
+        "penalty": 0.0
+      }
+    },
+    "run_id": "20261116-113346-b183c6a6",
+    "status": "succeeded",
+    "attempts": [
+      [
+        "agent-75de8752",
+        "编码新星·验收",
+        "passed"
+      ]
+    ],
+    "agent_after": {
+      "success": 1,
+      "failure": 0,
+      "total_tokens": 11675,
+      "total_cost": 0.011675,
+      "success_rate": 0.667,
+      "status": "ready"
+    },
+    "workbench_url": "http://127.0.0.1:8000/workbench?run=20261116-113346-b183c6a6"
+  },
+  "ok": true
+}

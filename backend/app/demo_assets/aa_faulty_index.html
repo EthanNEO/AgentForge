@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>出游 AA 算账工具</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    padding: 24px;
+    line-height: 1.6;
+  }
+  .container { max-width: 640px; margin: 0 auto; }
+  h1 { font-size: 22px; margin-bottom: 8px; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 20px; }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    margin-bottom: 16px;
+  }
+  .field { margin-bottom: 14px; }
+  label { display: block; font-size: 14px; margin-bottom: 6px; color: #555; }
+  input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #d0d5dd;
+    border-radius: 6px;
+    font-size: 15px;
+  }
+  input:focus { outline: none; border-color: #4a90d9; }
+  .btn {
+    width: 100%;
+    padding: 12px;
+    background: #4a90d9;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .btn:hover { background: #3a7bc0; }
+  .result {
+    background: #eef7ee;
+    border: 1px solid #cde5cd;
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 15px;
+    white-space: pre-wrap;
+    min-height: 40px;
+  }
+  .error {
+    color: #d9534f;
+    font-size: 14px;
+    margin-top: 8px;
+    min-height: 20px;
+  }
+  .expense-list { margin-bottom: 16px; }
+  .expense-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+  }
+  .expense-item:last-child { border-bottom: none; }
+  .remove-btn {
+    background: #f2dede;
+    color: #a94442;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .demo-note { font-size: 13px; color: #888; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>出游 AA 算账工具</h1>
+  <p class="subtitle">记下每笔谁付的、花了多少、谁参与平摊，自动算出谁该转给谁。</p>
+
+  <div class="card">
+    <div class="field">
+      <label for="payer-input">付款人</label>
+      <input type="text" id="payer-input" data-testid="payer-input" placeholder="例如：小李">
+    </div>
+    <div class="field">
+      <label for="amount-input">金额（元）</label>
+      <input type="text" id="amount-input" data-testid="amount-input" placeholder="例如：300">
+    </div>
+    <div class="field">
+      <label for="participants-input">参与人（用逗号分隔）</label>
+      <input type="text" id="participants-input" data-testid="participants-input" placeholder="例如：小李,小王,小张">
+    </div>
+    <button class="btn" id="add-expense-button" data-testid="add-expense-button">添加费用</button>
+    <div class="error" id="error-output" data-testid="error-output"></div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:16px; margin-bottom:10px;">已记录费用</h2>
+    <div class="expense-list" id="expense-list" data-testid="expense-list"></div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:16px; margin-bottom:10px;">结算结果</h2>
+    <div class="result" id="result-output" data-testid="result-output"></div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:16px; margin-bottom:10px;">演示：两人分别垫钱</h2>
+    <button class="btn" id="demo-button" data-testid="demo-button" style="background:#6c757d;">载入演示数据</button>
+    <p class="demo-note">演示：小李垫付 300 元（小李、小王、小张三人平摊），小王垫付 120 元（小李、小王两人平摊）。</p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var expenses = []; // { payer, amountCents, participants: [names] }
+
+  var payerInput = document.getElementById('payer-input');
+  var amountInput = document.getElementById('amount-input');
+  var participantsInput = document.getElementById('participants-input');
+  var addButton = document.getElementById('add-expense-button');
+  var errorOutput = document.getElementById('error-output');
+  var resultOutput = document.getElementById('result-output');
+  var expenseList = document.getElementById('expense-list');
+  var demoButton = document.getElementById('demo-button');
+
+  function showError(msg) {
+    errorOutput.textContent = msg || '';
+  }
+
+  function parseAmount(str) {
+    var s = String(str).trim();
+    if (s === '') return null;
+    // 支持整数或小数，最多两位小数
+    if (!/^\d+(\.\d{1,2})?$/.test(s)) return null;
+    var num = parseFloat(s);
+    if (isNaN(num) || num <= 0) return null;
+    return Math.round(num * 100); // 转为分
+  }
+
+  function parseParticipants(str) {
+    var s = String(str).trim();
+    if (s === '') return null;
+    var parts = s.split(/[,，、\s]+/).filter(function (x) { return x.trim() !== ''; });
+    if (parts.length === 0) return null;
+    return parts.map(function (x) { return x.trim(); });
+  }
+
+  function renderExpenses() {
+    expenseList.innerHTML = '';
+    if (expenses.length === 0) {
+      expenseList.innerHTML = '<div style="color:#aaa;font-size:14px;">暂无费用记录</div>';
+      return;
+    }
+    expenses.forEach(function (e, idx) {
+      var div = document.createElement('div');
+      div.className = 'expense-item';
+      var amountYuan = (e.amountCents / 100).toFixed(2);
+      var text = e.payer + ' 垫付 ' + amountYuan + ' 元（' + e.participants.join('、') + '）';
+      var span = document.createElement('span');
+      span.textContent = text;
+      var btn = document.createElement('button');
+      btn.className = 'remove-btn';
+      btn.textContent = '删除';
+      btn.setAttribute('data-testid', 'remove-expense-' + idx);
+      btn.addEventListener('click', function () {
+        expenses.splice(idx, 1);
+        renderExpenses();
+        compute();
+      });
+      div.appendChild(span);
+      div.appendChild(btn);
+      expenseList.appendChild(div);
+    });
+  }
+
+  function compute() {
+    if (expenses.length === 0) {
+      resultOutput.textContent = '';
+      return;
+    }
+    // 汇总每个人的净余额（正数=应收，负数=应付），单位：分
+    var balances = {}; // name -> cents
+    expenses.forEach(function (e) {
+      var n = e.participants.length;
+      if (n === 0) return;
+      // 每笔费用按整数分平摊，剩余分按参与名单顺序各补 1 分
+      var base = Math.floor(e.amountCents / n);
+      var remainder = e.amountCents % n;
+      var shares = {};
+      e.participants.forEach(function (name, i) {
+        shares[name] = base + (i < remainder ? 1 : 0);
+      });
+      // 付款人先付了全额
+      if (!(e.payer in balances)) balances[e.payer] = 0;
+      balances[e.payer] += e.amountCents;
+      // 每个参与人承担自己的份额
+      e.participants.forEach(function (name) {
+        if (!(name in balances)) balances[name] = 0;
+        balances[name] -= shares[name];
+      });
+    });
+
+    // 生成转账建议：欠钱的人转给应收的人
+    var debtors = []; // 负余额
+    var creditors = []; // 正余额
+    Object.keys(balances).forEach(function (name) {
+      var b = balances[name];
+      if (b < 0) debtors.push({ name: name, amount: -b });
+      else if (b > 0) creditors.push({ name: name, amount: b });
+    });
+
+    var transfers = [];
+    var i = 0, j = 0;
+    while (i < debtors.length && j < creditors.length) {
+      var d = debtors[i];
+      var c = creditors[j];
+      var pay = Math.min(d.amount, c.amount);
+      transfers.push({ from: d.name, to: c.name, amount: pay });
+      d.amount -= pay;
+      c.amount -= pay;
+      if (d.amount === 0) i++;
+      if (c.amount === 0) j++;
+    }
+
+    if (transfers.length === 0) {
+      resultOutput.textContent = '无需转账，已平账';
+      return;
+    }
+
+    var lines = transfers.map(function (t) {
+      var yuan = (t.amount / 100);
+      var yuanStr = Number.isInteger(yuan) ? String(yuan) : yuan.toFixed(2).replace(/\.?0+$/, '');
+      return t.from + '转给' + t.to + ' ' + yuanStr + ' 元';
+    });
+    resultOutput.textContent = lines.join('；');
+  }
+
+  function addExpense() {
+    var payer = payerInput.value.trim();
+    var amountStr = amountInput.value;
+    var participantsStr = participantsInput.value;
+
+    if (payer === '' || amountStr.trim() === '' || participantsStr.trim() === '') {
+      showError('请填写付款人、金额和参与人');
+      resultOutput.textContent = '请填写付款人、金额和参与人';
+      return;
+    }
+
+    var amountCents = parseAmount(amountStr);
+    if (amountCents === null) {
+      showError('金额无效，请输入大于 0 的数字');
+      return;
+    }
+
+    var participants = parseParticipants(participantsStr);
+    if (participants === null) {
+      showError('参与人无效');
+      return;
+    }
+
+    if (participants.indexOf(payer) === -1) {
+      // 付款人不在参与人中，自动加入
+      participants.push(payer);
+    }
+
+    expenses.push({ payer: payer, amountCents: amountCents, participants: participants });
+    showError('');
+    renderExpenses();
+    compute();
+
+    // 清空输入
+    payerInput.value = '';
+    amountInput.value = '';
+    participantsInput.value = '';
+  }
+
+  function loadDemo() {
+    expenses = [
+      { payer: '小李', amountCents: 30000, participants: ['小李', '小王', '小张'] },
+      { payer: '小王', amountCents: 12000, participants: ['小李', '小王'] }
+    ];
+    renderExpenses();
+    compute();
+  }
+
+  addButton.addEventListener('click', addExpense);
+  demoButton.addEventListener('click', loadDemo);
+
+  // 初始载入演示数据，便于直接查看两人分别垫钱的示例
+  loadDemo();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+
+# 密钥（绝不入库）
+.env
+
+# 虚拟环境与工具缓存
+.venv/
+.superpowers/
+.playwright-cli/
+desktop.ini
+
+# 运行时数据（数据库 / 运行产物 / 上传）
+data/agentforge.db
+data/runs/
+data/uploads/
+backend/.test-runtime/
+
+# 服务运行时日志与 PID（保留 output/ 下的盲测/演示/验收证据）
+output/runtime/
+output/runtime-*/
+# 11-03 旧 UI 截图，不得用于 design-qa
+output/playwright/
+
+# 内部过程记录（提交时剔除，不入仓库）
+AgentForge-交接-*.md
+docs/HANDOFF-*.md
+docs/初赛提交就绪审计-*.md
+# 智能体工作流过程文档（superpowers 技能框架），不入仓库
+docs/superpowers/

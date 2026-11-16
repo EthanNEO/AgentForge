@@ -1,0 +1,188 @@
+{
+ "records": [
+  {
+   "task": "signup",
+   "label": "报名名单",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "6 条平台核算用例全部通过",
+   "run_id": "20261116-113854-82005ee5",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 20103,
+   "cost": 0.0201,
+   "duration_s": 22.27,
+   "planning_latency_s": 1.67,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    },
+    {
+     "criterion": 7,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "meeting",
+   "label": "会议室冲突",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "4 条平台核算用例全部通过",
+   "run_id": "20261116-113921-ee48d1c8",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 46615,
+   "cost": 0.0466,
+   "duration_s": 31.33,
+   "planning_latency_s": 3.06,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "aa",
+   "label": "AA 算账",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "2 条平台核算用例全部通过",
+   "run_id": "20261116-113959-5c2fa3e2",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 20136,
+   "cost": 0.0201,
+   "duration_s": 24.57,
+   "planning_latency_s": 2.66,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "csv",
+   "label": "CSV 汇总",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "2 条平台核算用例全部通过",
+   "run_id": "20261116-114030-22b67a11",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 16714,
+   "cost": 0.0167,
+   "duration_s": 22.92,
+   "planning_latency_s": 1.68,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 1,
+     "status": "passed"
+    },
+    {
+     "criterion": 2,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "json",
+   "label": "纯 JSON",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "独立内容核对通过",
+   "run_id": "20261116-114057-de38eeca",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 5487,
+   "cost": 0.0055,
+   "duration_s": 3.82,
+   "planning_latency_s": 1.08,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  }
+ ],
+ "summary": {
+  "deepseek": {
+   "runs": 5,
+   "business_passed": 5,
+   "business_failed": 0,
+   "planning_failed": 0,
+   "no_auto_acceptance": 0,
+   "pass_rate": 1.0,
+   "total_tokens": 109055,
+   "total_cost": 0.109,
+   "avg_duration_s": 20.98,
+   "false_reject_review": []
+  }
+ }
+}

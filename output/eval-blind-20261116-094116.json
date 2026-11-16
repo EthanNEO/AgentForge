@@ -1,0 +1,498 @@
+{
+ "records": [
+  {
+   "task": "signup",
+   "label": "报名名单",
+   "provider": "qwen",
+   "status": "planning_failed",
+   "business": "failed",
+   "note": "规划失败（400）：{\"error\": \"自由任务需要可用的在线模型：Qwen4-Max-Preview 调用失败：网络错误：The read operation timed out\"}",
+   "run_id": null,
+   "attempts": null,
+   "retries": null,
+   "tokens": 0,
+   "cost": 0.0,
+   "duration_s": 20.22,
+   "planning_latency_s": null,
+   "planning_model": null,
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "aa",
+   "label": "AA 算账",
+   "provider": "qwen",
+   "status": "planning_failed",
+   "business": "failed",
+   "note": "规划失败（400）：{\"error\": \"自由任务需要可用的在线模型：Qwen4-Max-Preview 调用失败：网络错误：The read operation timed out\"}",
+   "run_id": null,
+   "attempts": null,
+   "retries": null,
+   "tokens": 0,
+   "cost": 0.0,
+   "duration_s": 20.21,
+   "planning_latency_s": null,
+   "planning_model": null,
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "meeting",
+   "label": "会议室冲突",
+   "provider": "qwen",
+   "status": "planning_failed",
+   "business": "failed",
+   "note": "规划失败（400）：{\"error\": \"自由任务需要可用的在线模型：Qwen4-Max-Preview 调用失败：网络错误：The read operation timed out\"}",
+   "run_id": null,
+   "attempts": null,
+   "retries": null,
+   "tokens": 0,
+   "cost": 0.0,
+   "duration_s": 20.19,
+   "planning_latency_s": null,
+   "planning_model": null,
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "csv",
+   "label": "CSV 汇总",
+   "provider": "qwen",
+   "status": "planning_failed",
+   "business": "failed",
+   "note": "规划失败（400）：{\"error\": \"自由任务需要可用的在线模型：Qwen4-Max-Preview 调用失败：网络错误：The read operation timed out\"}",
+   "run_id": null,
+   "attempts": null,
+   "retries": null,
+   "tokens": 0,
+   "cost": 0.0,
+   "duration_s": 20.22,
+   "planning_latency_s": null,
+   "planning_model": null,
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "json",
+   "label": "纯 JSON",
+   "provider": "qwen",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "独立内容核对通过",
+   "run_id": "20261116-092402-4cbbe306",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 4706,
+   "cost": 0.0094,
+   "duration_s": 5.86,
+   "planning_latency_s": 13.44,
+   "planning_model": {
+    "provider": "qwen",
+    "model": "qwen-latest-series-invite-1102"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "signup",
+   "label": "报名名单",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "6 条平台核算用例全部通过",
+   "run_id": "20261116-092422-be97c2df",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 34239,
+   "cost": 0.0685,
+   "duration_s": 80.06,
+   "planning_latency_s": 1.92,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    },
+    {
+     "criterion": 7,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "aa",
+   "label": "AA 算账",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "2 条平台核算用例全部通过",
+   "run_id": "20261116-092548-24e5a754",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 23846,
+   "cost": 0.0477,
+   "duration_s": 90.66,
+   "planning_latency_s": 2.6,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "meeting",
+   "label": "会议室冲突",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "4 条平台核算用例全部通过",
+   "run_id": "20261116-092722-f479ce71",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 36226,
+   "cost": 0.0725,
+   "duration_s": 95.86,
+   "planning_latency_s": 2.65,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "csv",
+   "label": "CSV 汇总",
+   "provider": "deepseek",
+   "status": "failed",
+   "business": "failed",
+   "note": "节点 制作汇总报告页面 达到最大重试次数 2 仍未通过",
+   "run_id": "20261116-092918-3a031425",
+   "attempts": 4,
+   "retries": 2,
+   "tokens": 63311,
+   "cost": 0.3862,
+   "duration_s": 134.98,
+   "planning_latency_s": 2.7,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "failed",
+     "detail": "验收第 4 条未通过：Locator expected to have text '排除 2 条'\nActual value: 排除 3 条 \nCall log:\n  - Expect \"to_have_text\" get_by_test_id(\"excluded-count\") with timeout 1500ms\n  - waiting for get_by_test_id(\"excluded-count\")\n    15 × locator resolved to <div class=\"excluded\" id=\"excluded-count\" data-testid=\"excluded-count\">排除 3 条</div>\n       - unexpected value \"排除 3 条\"\n\nAria snapshot:\n- text: 排除 3 条"
+    }
+   ]
+  },
+  {
+   "task": "json",
+   "label": "纯 JSON",
+   "provider": "deepseek",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "独立内容核对通过",
+   "run_id": "20261116-093139-89f3b3e2",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 2032,
+   "cost": 0.0041,
+   "duration_s": 3.38,
+   "planning_latency_s": 1.1,
+   "planning_model": {
+    "provider": "deepseek",
+    "model": "deepseek-flash"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  },
+  {
+   "task": "signup",
+   "label": "报名名单",
+   "provider": "mimo",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "6 条平台核算用例全部通过",
+   "run_id": "20261116-093146-b9cd4cf8",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 36342,
+   "cost": 0.0727,
+   "duration_s": 66.04,
+   "planning_latency_s": 11.12,
+   "planning_model": {
+    "provider": "mimo",
+    "model": "mimo-v2.6-pro"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    },
+    {
+     "criterion": 7,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "aa",
+   "label": "AA 算账",
+   "provider": "mimo",
+   "status": "failed",
+   "business": "failed",
+   "note": "节点 制作出游 AA 算账工具 达到最大重试次数 2 仍未通过",
+   "run_id": "20261116-093306-5c862e4c",
+   "attempts": 2,
+   "retries": 1,
+   "tokens": 90708,
+   "cost": 0.1814,
+   "duration_s": 257.45,
+   "planning_latency_s": 14.25,
+   "planning_model": {
+    "provider": "mimo",
+    "model": "mimo-v2.6-pro"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "failed",
+     "detail": "验收第 3 条未通过：Locator expected to have text '小王转给小李 100 元'\nActual value: 小王转给小李 50 元 \nCall log:\n  - Expect \"to_have_text\" get_by_test_id(\"result-output\") with timeout 1500ms\n  - waiting for get_by_test_id(\"result-output\")\n    15 × locator resolved to <div id=\"result-output\" data-testid=\"result-output\">小王转给小李 50 元</div>\n       - unexpected value \"小王转给小李 50 元\"\n\nAria snapshot:\n- text: 小王转给小李 50 元"
+    },
+    {
+     "criterion": 6,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "meeting",
+   "label": "会议室冲突",
+   "provider": "mimo",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "4 条平台核算用例全部通过",
+   "run_id": "20261116-093739-61528566",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 29327,
+   "cost": 0.0587,
+   "duration_s": 78.34,
+   "planning_latency_s": 20.31,
+   "planning_model": {
+    "provider": "mimo",
+    "model": "mimo-v2.6-pro"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "csv",
+   "label": "CSV 汇总",
+   "provider": "mimo",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "3 条平台核算用例全部通过",
+   "run_id": "20261116-093919-4bf366fc",
+   "attempts": 2,
+   "retries": 1,
+   "tokens": 41592,
+   "cost": 0.2453,
+   "duration_s": 98.11,
+   "planning_latency_s": 7.33,
+   "planning_model": {
+    "provider": "mimo",
+    "model": "mimo-v2.6-pro"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": [
+    {
+     "criterion": 1,
+     "status": "passed"
+    },
+    {
+     "criterion": 2,
+     "status": "passed"
+    },
+    {
+     "criterion": 3,
+     "status": "passed"
+    },
+    {
+     "criterion": 4,
+     "status": "passed"
+    },
+    {
+     "criterion": 5,
+     "status": "passed"
+    }
+   ]
+  },
+  {
+   "task": "json",
+   "label": "纯 JSON",
+   "provider": "mimo",
+   "status": "succeeded",
+   "business": "passed",
+   "note": "独立内容核对通过",
+   "run_id": "20261116-094108-91f916c9",
+   "attempts": 1,
+   "retries": 0,
+   "tokens": 1807,
+   "cost": 0.0036,
+   "duration_s": 6.08,
+   "planning_latency_s": 2.27,
+   "planning_model": {
+    "provider": "mimo",
+    "model": "mimo-v2.6-pro"
+   },
+   "simplified": false,
+   "fallbacks": 0,
+   "cases": []
+  }
+ ],
+ "summary": {
+  "qwen": {
+   "runs": 5,
+   "business_passed": 1,
+   "business_failed": 0,
+   "planning_failed": 4,
+   "no_auto_acceptance": 0,
+   "pass_rate": 0.2,
+   "total_tokens": 4706,
+   "total_cost": 0.0094,
+   "avg_duration_s": 17.34,
+   "false_reject_review": []
+  },
+  "deepseek": {
+   "runs": 5,
+   "business_passed": 4,
+   "business_failed": 1,
+   "planning_failed": 0,
+   "no_auto_acceptance": 0,
+   "pass_rate": 0.8,
+   "total_tokens": 159654,
+   "total_cost": 0.579,
+   "avg_duration_s": 80.99,
+   "false_reject_review": []
+  },
+  "mimo": {
+   "runs": 5,
+   "business_passed": 4,
+   "business_failed": 1,
+   "planning_failed": 0,
+   "no_auto_acceptance": 0,
+   "pass_rate": 0.8,
+   "total_tokens": 199776,
+   "total_cost": 0.5617,
+   "avg_duration_s": 101.2,
+   "false_reject_review": []
+  }
+ }
+}
