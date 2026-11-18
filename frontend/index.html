@@ -336,13 +336,23 @@
 <div class="app-shell">
   <aside class="sidebar">
     <div class="brand">
-      <div class="brand-mark" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <path d="M6 7.2L11 4l5 3.2v7.1L11 18l-5-3.7V7.2Z" stroke="white" stroke-width="1.35" stroke-linejoin="round"/>
-          <circle cx="6" cy="7.2" r="2" fill="white"/><circle cx="16" cy="7.2" r="2" fill="white"/><circle cx="11" cy="17" r="2" fill="white"/>
-        </svg>
+      <div class="brand-typewriter-label">
+        <div class="brand-typewriter">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <path d="M6 7.2L11 4l5 3.2v7.1L11 18l-5-3.7V7.2Z" stroke="white" stroke-width="1.35" stroke-linejoin="round"/>
+              <circle cx="6" cy="7.2" r="2" fill="white"/><circle cx="16" cy="7.2" r="2" fill="white"/><circle cx="11" cy="17" r="2" fill="white"/>
+            </svg>
+          </div>
+          <div class="brand-typewriter-track">
+            <div class="brand-typewriter-print">
+              <div class="brand-name">AgentForge</div>
+              <span class="brand-typewriter-carriage" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <div class="brand-sub">by Egress Threshold</div>
       </div>
-      <div><div class="brand-name">AgentForge</div><div class="brand-sub">by Egress Threshold</div></div>
     </div>
     <nav class="workspace-nav" aria-label="工作空间">
       <div class="section-label">工作空间</div>
@@ -1329,5 +1339,6 @@ boot().catch(error => {
   console.error(error);
 });
 </script>
+<script src="/static/brand-typewriter.js"></script>
 </body>
 </html>

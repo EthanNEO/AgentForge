@@ -134,6 +134,18 @@
     margin: 0;
     font: 500 clamp(26px, 2.25vw, 36px)/1.25 Georgia, "Songti SC", SimSun, serif;
   }
+  .shell .welcome-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .38em;
+  }
+  .welcome-title-mark {
+    flex: none;
+    width: 1em;
+    height: 1em;
+    color: #984b34;
+  }
   .shell .welcome p { margin: 8px auto 20px; color: var(--muted); font-size: 13px; }
   .shell .suggestions { gap: 8px; }
   .shell .suggestion {
@@ -212,8 +224,18 @@
 <div class="shell">
   <aside class="sidebar" id="workbench-sidebar">
     <div class="brand">
-      <div class="brand-mark"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 7.2L11 4l5 3.2v7.1L11 18l-5-3.7V7.2Z" stroke="white" stroke-width="1.35"/><circle cx="6" cy="7.2" r="2" fill="white"/><circle cx="16" cy="7.2" r="2" fill="white"/><circle cx="11" cy="17" r="2" fill="white"/></svg></div>
-      <div><div class="brand-name">AgentForge</div><div class="brand-sub">by Egress Threshold</div></div>
+      <div class="brand-typewriter-label">
+        <div class="brand-typewriter">
+          <div class="brand-mark"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M6 7.2L11 4l5 3.2v7.1L11 18l-5-3.7V7.2Z" stroke="white" stroke-width="1.35"/><circle cx="6" cy="7.2" r="2" fill="white"/><circle cx="16" cy="7.2" r="2" fill="white"/><circle cx="11" cy="17" r="2" fill="white"/></svg></div>
+          <div class="brand-typewriter-track">
+            <div class="brand-typewriter-print">
+              <div class="brand-name">AgentForge</div>
+              <span class="brand-typewriter-carriage" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+        <div class="brand-sub">by Egress Threshold</div>
+      </div>
     </div>
     <button class="new-task" id="new-task">＋ 新任务</button>
     <button class="new-task demo-task" id="selfheal-demo" title="AA 算账：平台核算拒绝 → 携带证据修复 → 通过">🔁 自愈演示</button>
@@ -237,7 +259,15 @@
       <main class="chat-panel">
         <div class="messages" id="messages">
           <div class="welcome" id="welcome">
-            <h1>创建任务</h1>
+            <h1 class="welcome-title">
+              <svg class="welcome-title-mark" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M6 7.2L11 4l5 3.2v7.1L11 18l-5-3.7V7.2Z" stroke="currentColor" stroke-width="1.35" stroke-linejoin="round"/>
+                <circle cx="6" cy="7.2" r="2" fill="currentColor"/>
+                <circle cx="16" cy="7.2" r="2" fill="currentColor"/>
+                <circle cx="11" cy="17" r="2" fill="currentColor"/>
+              </svg>
+              创建任务
+            </h1>
             <p>描述交付目标，确认计划后由多智能体执行与验证</p>
             <div class="suggestions">
               <button class="suggestion">构建一个订单统计工具，并生成测试和风险报告</button>
@@ -693,5 +723,6 @@ if(runId)await selectRun(runId)}
 $("#send").onclick=createPlan;$("#attachment-input").addEventListener("change",uploadSelectedFiles);$("#prompt").addEventListener("keydown",event=>{if(event.ctrlKey&&event.key==="Enter"){event.preventDefault();createPlan()}});$("#new-task").onclick=resetWorkspace;$("#selfheal-demo").onclick=startSelfHealDemo;
 boot().catch(error=>{$("#engine-state").textContent="调度引擎未连接";$("#engine-state").classList.add("offline");$("#mode").textContent="连接失败";showError("无法连接 AgentForge Runtime："+error.message)});
 </script>
+<script src="/static/brand-typewriter.js"></script>
 </body>
 </html>

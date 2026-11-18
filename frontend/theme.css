@@ -751,3 +751,130 @@ a:focus-visible {
 .shell .attachment-chip img { width:24px; height:24px; object-fit:cover; border-radius:4px; }
 .shell .attachment-name { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .shell .attachment-remove { border:0; background:transparent; color:#9f4e34; font-size:10px; padding:2px; }
+
+/* The two consoles share the same brand animation. */
+.shell .sidebar .brand,
+.app-shell .sidebar .brand {
+  height: 84px;
+}
+
+.brand .brand-typewriter-label {
+  min-width: 0;
+  width: 188px;
+}
+
+.brand .brand-typewriter .brand-mark {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  width: 29px;
+  height: 29px;
+  border: 1px solid #a6835c;
+  border-radius: 7px;
+  background: #6a4f38;
+}
+
+.brand .brand-typewriter .brand-mark svg {
+  width: 18px;
+  height: 18px;
+}
+
+.brand .brand-typewriter-label .brand-sub {
+  display: block;
+  margin: 4px 0 0;
+  padding: 0 0 0 2px;
+  background: transparent;
+  color: #5d5346;
+  font-size: 9px;
+  letter-spacing: .65px;
+}
+
+.brand-typewriter {
+  position: relative;
+  height: 52px;
+  overflow: hidden;
+  border: 1px solid #645541;
+  border-radius: 12px 12px 6px 6px;
+  background: linear-gradient(155deg, #393530, #242320 72%);
+  box-shadow: inset 0 1px 5px #1b191680, 0 2px 5px #2d231624;
+}
+
+.brand-typewriter::before {
+  content: "";
+  position: absolute;
+  inset: 32px 7px auto 47px;
+  height: 3px;
+  border-inline: 4px solid #171512;
+  background: linear-gradient(#c5ac75, #6e5733);
+  box-shadow: 0 2px 2px #161411;
+}
+
+.brand-typewriter-track {
+  position: absolute;
+  inset: 0 0 0 44px;
+  overflow: hidden;
+}
+
+.brand-typewriter-print {
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  width: 10ch;
+  font: 600 13px/18px "Courier New", monospace;
+}
+
+.brand-typewriter-print .brand-name {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #f0dec1;
+  font: inherit;
+  letter-spacing: 0;
+  text-shadow: 0 1px 2px #211a14;
+}
+
+.brand-typewriter-carriage {
+  position: absolute;
+  top: 17px;
+  right: 0;
+  width: 26px;
+  height: 13px;
+  transform: translateX(50%);
+  border: 1px solid #ad905e;
+  border-radius: 4px;
+  background: linear-gradient(#ead3a0, #bd9d63 47%, #8d6c3e);
+  box-shadow: 0 2px 3px #15120e;
+}
+
+.brand-typewriter-carriage::before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 80px;
+  height: 36px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 100%, #f1c780a8, #d8ae6c36 52%, transparent 74%);
+  clip-path: polygon(0 0, 100% 0, 55% 100%, 45% 100%);
+}
+
+.brand-typewriter-carriage::after {
+  content: "";
+  position: absolute;
+  inset: 3px 8px;
+  border-radius: 2px;
+  background: #493b2a;
+  box-shadow: inset 0 1px 2px #211a14;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .brand-typewriter-print {
+    animation: brand-type 1.7s steps(10, end) .25s both;
+  }
+}
+
+@keyframes brand-type {
+  from { width: 0; }
+  to { width: 10ch; }
+}
